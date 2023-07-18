@@ -1,0 +1,15 @@
+---
+ - hosts: all 
+   tasks:
+         - yum: 
+	      name: httpd
+	      state: present
+  	 - service:
+	      name: httpd
+	      state: started
+	      enabled: yes
+         - lineinfile:
+	      path: /var/www/html/index.html
+	      line: "hello namaste"
+	      create: yes
+	      setype: httpd_sys_content_t
